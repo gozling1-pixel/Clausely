@@ -1,11 +1,108 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+/* DM Sans (body) and DM Mono (code) — loaded from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* === Clausely design tokens === */
+:root {
+  --bg: #1e2128;
+  --surface: #1a1d26;
+  --surface-2: #21252f;
+  --text: #e8eaf0;
+  --muted: #6b7080;
+  --accent: #d52b1e;
+  --green: #34c77b;
+  --amber: #f59e0b;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 10px;
+}
+
+/* === Base styles === */
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+}
+
+code, pre, .font-mono {
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Subtle grid background */
+body {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: -1px -1px;
+  background-attachment: fixed;
+}
+
+/* === Reusable component classes === */
+@layer components {
+  .clausely-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .clausely-card-hover {
+    transition: border-color 150ms ease, transform 150ms ease;
+  }
+  .clausely-card-hover:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+  }
+
+  .clausely-btn-primary {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: opacity 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .clausely-btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .clausely-btn-secondary {
+    background-color: var(--surface-2);
+    color: var(--text);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 500;
+    border: 1px solid var(--border);
+    transition: border-color 150ms ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .clausely-btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .badge-free {
+    background-color: rgba(52, 199, 123, 0.15);
+    color: var(--green);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .badge-warn {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: var(--amber);
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
 }
