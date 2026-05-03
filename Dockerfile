@@ -2,7 +2,7 @@
 # Production Dockerfile for Clausely (Laravel 13 + PHP 8.3)
 # Single-stage build using FrankenPHP-style base for simplicity
 
-FROM php:8.3-fpm-alpine AS base
+FROM php:8.4-fpm-alpine AS base
 
 # Install system dependencies
 RUN apk add --no-cache \
