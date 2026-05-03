@@ -6,6 +6,7 @@ FROM php:8.4-fpm-alpine AS base
 
 # Install system dependencies
 RUN apk add --no-cache \
+    gettext \
     nginx \
     supervisor \
     curl \
